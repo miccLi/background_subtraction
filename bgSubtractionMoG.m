@@ -49,8 +49,8 @@ function [bg, fg, w, mean, sd] = bgSubtractionMoG(img, w, mean, sd)
 %     is_foreground = (~match) & any((w>thres),3) & any((abs(u_diff)>(D*sd)),3);
 %     fg(~match) = 255;
 
-
     fg = abs(img_gray - bg);
-    fg(fg < 50) = 0;
+    fg(fg < 30) = 0;
     bg = uint8(bg);
+    fg = logical(fg);
 end
